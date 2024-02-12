@@ -1,0 +1,11 @@
+def group_letters(words):
+    letter_groups = {}
+    for word in words:
+        for letter in word:
+            if letter.isalpha():
+                if letter in letter_groups:
+                    letter_groups[letter].append(word)
+                else:
+                    letter_groups[letter] = [word]
+    sorted_letters = sorted(letter_groups.items(), key=lambda x: (-len(x[1]), x[0]))
+    return ''.join([letter + ''.join(words) for letter, words in sorted_letters])

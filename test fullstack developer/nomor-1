@@ -1,0 +1,10 @@
+def count_letters(text):
+    letter_counts = {}
+    for letter in text.lower():
+        if letter.isalpha():
+            if letter in letter_counts:
+                letter_counts[letter] += 1
+            else:
+                letter_counts[letter] = 1
+    sorted_letters = sorted(letter_counts.items(), key=lambda x: (-x[1], x[0]))
+    return ', '.join([f"{letter}={count}" for letter, count in sorted_letters])
